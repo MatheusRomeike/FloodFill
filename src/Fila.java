@@ -1,40 +1,48 @@
+import java.util.NoSuchElementException;
+
 public class Fila<T> {
-    private int top = -1;
-    private int base = 0;
+    private int top;
+    private int base;
     private T[] data;
 
     Fila(int size) {
+        if (size <= 0) {
+            throw new IllegalArgumentException("O tamanho da fila deve ser maior que zero.");
+        }
         data = (T[]) new Object[size];
+        top = 0;
+        base = 0;
     }
 
-    public void add(T data) {
+    public void add(T item) {
         if (isFull()) {
-            throw new RuntimeException("Fila cheia");
+            throw new IllegalStateException("A fila está cheia.");
         }
+        data[top] = item;
         top = move(top);
-        this.data[top] = data;
     }
 
     public T remove() {
         if (isEmpty()) {
-            throw new RuntimeException("Fila vazia");
+            throw new NoSuchElementException("A fila está vazia.");
         }
-        T element = data[base];
+        T item = data[base];
         base = move(base);
-        return element;
+        return item;
     }
 
     public void clear() {
-        top = -1;
+        top = 0;
         base = 0;
     }
 
     public boolean isFull() {
-        return top == data.length - 1;
+        int nextTop = move(top);
+        return nextTop == base;
     }
 
     public boolean isEmpty() {
-        return top == -1;
+        return top == base;
     }
 
     private int move(int position) {

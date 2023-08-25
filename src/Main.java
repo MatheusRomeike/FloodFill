@@ -1,9 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Image image = new Image();
-        image.printImage();
-
-
+        FloodFillFila floodFillFila = new FloodFillFila(new Image());
+        floodFillFila.Inicializar();
 
     }
 }

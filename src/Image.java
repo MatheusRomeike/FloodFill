@@ -25,7 +25,28 @@ public class Image {
             }
             System.out.println("]");
         }
-        System.out.print("------------------------------");
+        System.out.println("------------------------------");
+    }
+
+    public int getLargura() {
+        return image[0].length;
+    }
+
+    public int getAltura() {
+        return image.length;
+    }
+
+    public int getFundo() {
+        return getAltura();
+    }
+
+    public void setPixel(Ponto ponto, int cor) {
+        image[ponto.getX()][ponto.getY()] = cor;
+        printImage();
+    }
+
+    public int getPixel(Ponto ponto) {
+        return image[ponto.getX()][ponto.getY()];
     }
 
 }
