@@ -1,9 +1,9 @@
-public class FloodFill {
+public class FloodFillFila {
     private int[][] imagem;
     private int novaCor = 2;
     private static int corDeFundo = 0;
 
-    public FloodFill(int[][] imagem) {
+    public FloodFillFila(int[][] imagem) {
         this.imagem = imagem;
     }
 
