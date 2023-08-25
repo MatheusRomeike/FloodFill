@@ -12,20 +12,32 @@ public class Image {
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
 
+    final static String ANSI_RED = "\u001B[31m";
+    final static String ANSI_BLACK = "\u001B[30m";
+    final static String ANSI_RESET = "\u001B[0m";
+
     public void printImage() {
         for (int[] line : image) {
             int index = 0;
             System.out.print("[");
             for (int pixel : line) {
                 index++;
-                if (index == line.length)
-                    System.out.print(pixel);
+                String pixelText = index == line.length ? pixel + "" : pixel + ", " ;
+
+                if (pixel == 1)
+                    printColored(pixelText, ANSI_BLACK);
+                else if (pixel == 2)
+                    printColored(pixelText, ANSI_RED);
                 else
-                    System.out.print(pixel + ", ");
+                    System.out.print(pixelText);
             }
             System.out.println("]");
         }
         System.out.println("------------------------------");
+    }
+
+    private void printColored(String pixel, String color) {
+        System.out.print(color + pixel + ANSI_RESET);
     }
 
     public int getLargura() {

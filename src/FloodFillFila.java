@@ -31,7 +31,17 @@ public class FloodFillFila {
             if (podePintar(ponto)) {
                 fila.add(ponto);
                 imagem.setPixel(ponto, 2);
+                sleep(250);
             }
+        }
+    }
+
+    private void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -51,7 +61,7 @@ public class FloodFillFila {
         imagem.printImage();
         Ponto ponto = new Ponto(0, 0);
         ponto.ScannearPonto();
-        while (ponto.getX() >= imagem.getLargura() || ponto.getX() < 0 || ponto.getY() >= imagem.getAltura() || ponto.getY() < 0) {
+        while (ponto.getX() >= imagem.getLargura() - 1 || ponto.getX() < 0 || ponto.getY() >= imagem.getAltura() - 1 || ponto.getY() < 0 || imagem.getPixel(ponto) == 1) {
             System.out.println("Informe pontos válidos.");
             ponto.ScannearPonto();
         }
