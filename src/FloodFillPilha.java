@@ -25,16 +25,16 @@ public class FloodFillPilha {
         while (!pilha.isEmpty()) {
             Point atual = pilha.remove();
 
-            int i = atual.x;
-            int j = atual.y;
+            int horizontal = atual.x;
+            int vertical = atual.y;
 
-            if (matriz[i][j] == corAntiga) {
-                matriz[i][j] = novaCor;
+            if (matriz[horizontal][vertical] == corAntiga) {
+                matriz[horizontal][vertical] = novaCor;
 
-                if (i - 1 >= 0) pilha.add(new Point(i - 1, j));
-                if (i + 1 < largura) pilha.add(new Point(i + 1, j));
-                if (j - 1 >= 0) pilha.add(new Point(i, j - 1));
-                if (j + 1 < altura) pilha.add(new Point(i, j + 1));
+                if (horizontal - 1 >= 0) pilha.add(new Point(horizontal - 1, vertical));
+                if (horizontal + 1 < largura) pilha.add(new Point(horizontal + 1, vertical));
+                if (vertical - 1 >= 0) pilha.add(new Point(horizontal, vertical - 1));
+                if (vertical + 1 < altura) pilha.add(new Point(horizontal, vertical + 1));
             }
         }
     }
